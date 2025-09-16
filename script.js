@@ -324,8 +324,8 @@ function initSkillsCircle() {
   
   // Calculate 3D elliptical orbital position
   function calculate3DOrbitalPosition(orbit, angle, time, centerX = 100, centerY = 100) {
-    const baseRadius = orbit === 1 ? 45 : orbit === 2 ? 65 : 85;
-    const depth = orbit === 1 ? 20 : orbit === 2 ? 30 : 40;
+    const baseRadius = orbit === 1 ? 35 : orbit === 2 ? 50 : 65;
+    const depth = orbit === 1 ? 10 : orbit === 2 ? 15 : 20;
     
     // Create elliptical motion with depth variation
     const radians = (angle * Math.PI) / 180;
@@ -407,33 +407,66 @@ function initSkillsCircle() {
     updatePlanetPositions();
   }
   
-  // Animation loop for 3D effects
-  function animate3D() {
-    animationTime += 16; // ~60fps
-    requestAnimationFrame(animate3D);
+  // Performance optimization for mobile devices
+  let isMobile = window.innerWidth <= 768;
+  let animationFrameId;
+  let lastTime = 0;
+  const targetFPS = isMobile ? 30 : 60;
+  const frameInterval = 1000 / targetFPS;
+  
+  // Animation loop for 3D effects with performance optimization
+  function animate3D(currentTime) {
+    if (currentTime - lastTime >= frameInterval) {
+      animationTime += frameInterval;
+      lastTime = currentTime;
+    }
+    
+    animationFrameId = requestAnimationFrame(animate3D);
   }
   
   // Start animation loop
-  animate3D();
+  animationFrameId = requestAnimationFrame(animate3D);
   
-  // Container hover handlers
+  // Handle window resize for performance optimization
+  window.addEventListener('resize', () => {
+    isMobile = window.innerWidth <= 768;
+    const newTargetFPS = isMobile ? 30 : 60;
+    const newFrameInterval = 1000 / newTargetFPS;
+    
+    // Cancel current animation
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+    
+    // Restart with new settings
+    lastTime = 0;
+    animationFrameId = requestAnimationFrame(animate3D);
+  });
+  
+  // Container hover handlers with mobile optimization
   container.addEventListener('mouseenter', () => {
     isHovering = true;
     isReversed = !isReversed;
-    container.addEventListener('mousemove', handleMouseMove);
+    
+    // Only add mousemove listener on non-touch devices
+    if (!isMobile) {
+      container.addEventListener('mousemove', handleMouseMove);
+    }
     
     // Add enhanced glow effect
     svg.style.filter = 'drop-shadow(0 20px 50px rgba(96,165,250,0.6))';
     
-    // Add 3D perspective to the entire system
-    svg.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
+    // Add 3D perspective to the entire system (reduced on mobile)
+    const perspectiveValue = isMobile ? 'perspective(600px) rotateX(2deg) rotateY(2deg)' : 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
+    svg.style.transform = perspectiveValue;
     svg.style.transition = 'transform 0.5s ease';
     
-    // Speed up and reverse orbital animations
+    // Speed up and reverse orbital animations (less aggressive on mobile)
+    const speedMultiplier = isMobile ? 0.8 : 0.7;
     skillItems.forEach(item => {
       const orbit = item.getAttribute('data-orbit');
       const duration = orbit === '1' ? '15s' : orbit === '2' ? '25s' : '35s';
-      item.style.animationDuration = duration.replace('s', '') * 0.7 + 's';
+      item.style.animationDuration = duration.replace('s', '') * speedMultiplier + 's';
       item.style.animationDirection = isReversed ? 'reverse' : 'normal';
     });
   });

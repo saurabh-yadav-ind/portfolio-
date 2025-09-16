@@ -921,50 +921,73 @@ img, svg {
   position: relative;
 }
 
-/* Different orbital speeds and elliptical paths for each orbit */
+/* Different orbital speeds and circular paths for each orbit */
 .skill-item[data-orbit="1"] {
-  animation: ellipticalOrbit1 15s linear infinite;
+  animation: circularOrbit1 15s linear infinite;
 }
 
 .skill-item[data-orbit="2"] {
-  animation: ellipticalOrbit2 25s linear infinite;
+  animation: circularOrbit2 25s linear infinite;
 }
 
 .skill-item[data-orbit="3"] {
-  animation: ellipticalOrbit3 35s linear infinite;
+  animation: circularOrbit3 35s linear infinite;
 }
 
-/* 3D Elliptical orbit animations with depth changes */
-@keyframes ellipticalOrbit1 {
+/* 3D Circular orbit animations with depth changes */
+@keyframes circularOrbit1 {
   0% { 
-    transform: rotate(0deg) translateX(45px) rotate(0deg) translateZ(0px);
+    transform: rotate(0deg) translateX(35px) rotate(0deg) translateZ(0px);
     opacity: 0.9;
   }
   25% { 
-    transform: rotate(90deg) translateX(45px) rotate(-90deg) translateZ(-20px);
-    opacity: 0.7;
+    transform: rotate(90deg) translateX(35px) rotate(-90deg) translateZ(-10px);
+    opacity: 0.8;
   }
   50% { 
-    transform: rotate(180deg) translateX(45px) rotate(-180deg) translateZ(0px);
+    transform: rotate(180deg) translateX(35px) rotate(-180deg) translateZ(0px);
     opacity: 0.9;
   }
   75% { 
-    transform: rotate(270deg) translateX(45px) rotate(-270deg) translateZ(20px);
-    opacity: 0.7;
+    transform: rotate(270deg) translateX(35px) rotate(-270deg) translateZ(10px);
+    opacity: 0.8;
   }
   100% { 
-    transform: rotate(360deg) translateX(45px) rotate(-360deg) translateZ(0px);
+    transform: rotate(360deg) translateX(35px) rotate(-360deg) translateZ(0px);
     opacity: 0.9;
   }
 }
 
-@keyframes ellipticalOrbit2 {
+@keyframes circularOrbit2 {
+  0% { 
+    transform: rotate(0deg) translateX(50px) rotate(0deg) translateZ(0px);
+    opacity: 0.9;
+  }
+  25% { 
+    transform: rotate(90deg) translateX(50px) rotate(-90deg) translateZ(-15px);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: rotate(180deg) translateX(50px) rotate(-180deg) translateZ(0px);
+    opacity: 0.9;
+  }
+  75% { 
+    transform: rotate(270deg) translateX(50px) rotate(-270deg) translateZ(15px);
+    opacity: 0.7;
+  }
+  100% { 
+    transform: rotate(360deg) translateX(50px) rotate(-360deg) translateZ(0px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes circularOrbit3 {
   0% { 
     transform: rotate(0deg) translateX(65px) rotate(0deg) translateZ(0px);
     opacity: 0.9;
   }
   25% { 
-    transform: rotate(90deg) translateX(65px) rotate(-90deg) translateZ(-30px);
+    transform: rotate(90deg) translateX(65px) rotate(-90deg) translateZ(-20px);
     opacity: 0.6;
   }
   50% { 
@@ -972,82 +995,82 @@ img, svg {
     opacity: 0.9;
   }
   75% { 
-    transform: rotate(270deg) translateX(65px) rotate(-270deg) translateZ(30px);
+    transform: rotate(270deg) translateX(65px) rotate(-270deg) translateZ(20px);
     opacity: 0.6;
   }
   100% { 
     transform: rotate(360deg) translateX(65px) rotate(-360deg) translateZ(0px);
-    opacity: 0.9;
-  }
-}
-
-@keyframes ellipticalOrbit3 {
-  0% { 
-    transform: rotate(0deg) translateX(85px) rotate(0deg) translateZ(0px);
-    opacity: 0.9;
-  }
-  25% { 
-    transform: rotate(90deg) translateX(85px) rotate(-90deg) translateZ(-40px);
-    opacity: 0.5;
-  }
-  50% { 
-    transform: rotate(180deg) translateX(85px) rotate(-180deg) translateZ(0px);
-    opacity: 0.9;
-  }
-  75% { 
-    transform: rotate(270deg) translateX(85px) rotate(-270deg) translateZ(40px);
-    opacity: 0.5;
-  }
-  100% { 
-    transform: rotate(360deg) translateX(85px) rotate(-360deg) translateZ(0px);
     opacity: 0.9;
   }
 }
 
 /* Reverse direction on hover */
 .skills-circle-container:hover .skill-item[data-orbit="1"] {
-  animation: ellipticalOrbit1Reverse 15s linear infinite;
+  animation: circularOrbit1Reverse 15s linear infinite;
 }
 
 .skills-circle-container:hover .skill-item[data-orbit="2"] {
-  animation: ellipticalOrbit2Reverse 25s linear infinite;
+  animation: circularOrbit2Reverse 25s linear infinite;
 }
 
 .skills-circle-container:hover .skill-item[data-orbit="3"] {
-  animation: ellipticalOrbit3Reverse 35s linear infinite;
+  animation: circularOrbit3Reverse 35s linear infinite;
 }
 
-/* Reverse elliptical orbit animations */
-@keyframes ellipticalOrbit1Reverse {
+/* Reverse circular orbit animations */
+@keyframes circularOrbit1Reverse {
   0% { 
-    transform: rotate(360deg) translateX(45px) rotate(-360deg) translateZ(0px);
+    transform: rotate(360deg) translateX(35px) rotate(-360deg) translateZ(0px);
     opacity: 0.9;
   }
   25% { 
-    transform: rotate(270deg) translateX(45px) rotate(-270deg) translateZ(20px);
-    opacity: 0.7;
+    transform: rotate(270deg) translateX(35px) rotate(-270deg) translateZ(10px);
+    opacity: 0.8;
   }
   50% { 
-    transform: rotate(180deg) translateX(45px) rotate(-180deg) translateZ(0px);
+    transform: rotate(180deg) translateX(35px) rotate(-180deg) translateZ(0px);
     opacity: 0.9;
   }
   75% { 
-    transform: rotate(90deg) translateX(45px) rotate(-90deg) translateZ(-20px);
-    opacity: 0.7;
+    transform: rotate(90deg) translateX(35px) rotate(-90deg) translateZ(-10px);
+    opacity: 0.8;
   }
   100% { 
-    transform: rotate(0deg) translateX(45px) rotate(0deg) translateZ(0px);
+    transform: rotate(0deg) translateX(35px) rotate(0deg) translateZ(0px);
     opacity: 0.9;
   }
 }
 
-@keyframes ellipticalOrbit2Reverse {
+@keyframes circularOrbit2Reverse {
+  0% { 
+    transform: rotate(360deg) translateX(50px) rotate(-360deg) translateZ(0px);
+    opacity: 0.9;
+  }
+  25% { 
+    transform: rotate(270deg) translateX(50px) rotate(-270deg) translateZ(15px);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: rotate(180deg) translateX(50px) rotate(-180deg) translateZ(0px);
+    opacity: 0.9;
+  }
+  75% { 
+    transform: rotate(90deg) translateX(50px) rotate(-90deg) translateZ(-15px);
+    opacity: 0.7;
+  }
+  100% { 
+    transform: rotate(0deg) translateX(50px) rotate(0deg) translateZ(0px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes circularOrbit3Reverse {
   0% { 
     transform: rotate(360deg) translateX(65px) rotate(-360deg) translateZ(0px);
     opacity: 0.9;
   }
   25% { 
-    transform: rotate(270deg) translateX(65px) rotate(-270deg) translateZ(30px);
+    transform: rotate(270deg) translateX(65px) rotate(-270deg) translateZ(20px);
     opacity: 0.6;
   }
   50% { 
@@ -1055,34 +1078,11 @@ img, svg {
     opacity: 0.9;
   }
   75% { 
-    transform: rotate(90deg) translateX(65px) rotate(-90deg) translateZ(-30px);
+    transform: rotate(90deg) translateX(65px) rotate(-90deg) translateZ(-20px);
     opacity: 0.6;
   }
   100% { 
     transform: rotate(0deg) translateX(65px) rotate(0deg) translateZ(0px);
-    opacity: 0.9;
-  }
-}
-
-@keyframes ellipticalOrbit3Reverse {
-  0% { 
-    transform: rotate(360deg) translateX(85px) rotate(-360deg) translateZ(0px);
-    opacity: 0.9;
-  }
-  25% { 
-    transform: rotate(270deg) translateX(85px) rotate(-270deg) translateZ(40px);
-    opacity: 0.5;
-  }
-  50% { 
-    transform: rotate(180deg) translateX(85px) rotate(-180deg) translateZ(0px);
-    opacity: 0.9;
-  }
-  75% { 
-    transform: rotate(90deg) translateX(85px) rotate(-90deg) translateZ(-40px);
-    opacity: 0.5;
-  }
-  100% { 
-    transform: rotate(0deg) translateX(85px) rotate(0deg) translateZ(0px);
     opacity: 0.9;
   }
 }
@@ -2900,6 +2900,195 @@ a:focus-visible, button:focus-visible { outline: 2px solid #60a5fa; outline-offs
   .nav-toggle {
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--border);
+  }
+}
+
+/* Responsive 3D Skills Circle */
+@media (max-width: 1920px) {
+  .skills-circle-container {
+    width: min(400px, 90%);
+  }
+  
+  .skill-item[data-orbit="1"] {
+    animation-duration: 12s;
+  }
+  
+  .skill-item[data-orbit="2"] {
+    animation-duration: 20s;
+  }
+  
+  .skill-item[data-orbit="3"] {
+    animation-duration: 28s;
+  }
+}
+
+@media (max-width: 1536px) {
+  .skills-circle-container {
+    width: min(380px, 88%);
+  }
+  
+  .skill-item[data-orbit="1"] {
+    animation-duration: 10s;
+  }
+  
+  .skill-item[data-orbit="2"] {
+    animation-duration: 18s;
+  }
+  
+  .skill-item[data-orbit="3"] {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 1280px) {
+  .skills-circle-container {
+    width: min(350px, 85%);
+  }
+  
+  .skill-item[data-orbit="1"] {
+    animation-duration: 8s;
+  }
+  
+  .skill-item[data-orbit="2"] {
+    animation-duration: 15s;
+  }
+  
+  .skill-item[data-orbit="3"] {
+    animation-duration: 22s;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skills-circle-container {
+    width: min(320px, 80%);
+  }
+  
+  .skill-item[data-orbit="1"] {
+    animation-duration: 7s;
+  }
+  
+  .skill-item[data-orbit="2"] {
+    animation-duration: 12s;
+  }
+  
+  .skill-item[data-orbit="3"] {
+    animation-duration: 18s;
+  }
+  
+  /* Reduce 3D effects on tablets for better performance */
+  .skills-circle-container {
+    perspective: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-circle-container {
+    width: min(280px, 75%);
+  }
+  
+  /* Disable animations on mobile devices */
+  .skill-item {
+    animation: none !important;
+  }
+  
+  /* Static positioning for mobile - keep planets within frame */
+  .skill-item[data-orbit="1"] {
+    transform: none !important;
+  }
+  
+  .skill-item[data-orbit="2"] {
+    transform: none !important;
+  }
+  
+  .skill-item[data-orbit="3"] {
+    transform: none !important;
+  }
+  
+  /* Simplified 3D effects for mobile */
+  .skills-circle-container {
+    perspective: 600px;
+  }
+  
+  .skill-tooltip {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-circle-container {
+    width: min(250px, 70%);
+  }
+  
+  /* Disable animations on small mobile devices */
+  .skill-item {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Minimal 3D effects for small mobile */
+  .skills-circle-container {
+    perspective: 400px;
+  }
+  
+  .skill-tooltip {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  
+  .skill-item[data-skill="React"] .skill-icon-container i,
+  .skill-item[data-skill="Node.js"] .skill-icon-container i,
+  .skill-item[data-skill="Python"] .skill-icon-container i,
+  .skill-item[data-skill="JavaScript"] .skill-icon-container i {
+    font-size: 18px;
+  }
+  
+  .skill-item[data-skill="TypeScript"] .skill-icon-container i,
+  .skill-item[data-skill="MongoDB"] .skill-icon-container i,
+  .skill-item[data-skill="MySQL"] .skill-icon-container i,
+  .skill-item[data-skill="Docker"] .skill-icon-container i {
+    font-size: 16px;
+  }
+  
+  .skill-item[data-skill="Git"] .skill-icon-container i,
+  .skill-item[data-skill="AWS"] .skill-icon-container i,
+  .skill-item[data-skill="Express"] .skill-icon-container i,
+  .skill-item[data-skill="FastAPI"] .skill-icon-container i {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-circle-container {
+    width: min(220px, 65%);
+  }
+  
+  /* Disable animations on very small mobile devices */
+  .skill-item {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Disable complex 3D effects on very small screens */
+  .skills-circle-container {
+    perspective: 300px;
+  }
+}
+
+@media (max-width: 320px) {
+  .skills-circle-container {
+    width: min(200px, 60%);
+  }
+  
+  /* Disable animations on tiny mobile devices */
+  .skill-item {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Minimal effects for very small screens */
+  .skills-circle-container {
+    perspective: 200px;
   }
 }
 
