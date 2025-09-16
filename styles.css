@@ -92,6 +92,38 @@ img, svg {
               radial-gradient(800px 400px at 70% 80%, rgba(139,92,246,0.04), transparent 50%),
               radial-gradient(600px 300px at 30% 40%, rgba(236,72,153,0.03), transparent 50%);
   filter: blur(10px) saturate(100%);
+  animation: lightGradientShift 20s ease-in-out infinite;
+}
+
+@keyframes lightGradientShift {
+  0%, 100% {
+    background: radial-gradient(1200px 600px at 10% 20%, rgba(59,130,246,0.08), transparent 60%),
+                radial-gradient(1000px 500px at 90% 10%, rgba(34,211,238,0.08), transparent 60%),
+                radial-gradient(1200px 600px at 50% 100%, rgba(59,130,246,0.06), transparent 60%),
+                radial-gradient(800px 400px at 70% 80%, rgba(139,92,246,0.04), transparent 50%),
+                radial-gradient(600px 300px at 30% 40%, rgba(236,72,153,0.03), transparent 50%);
+  }
+  25% {
+    background: radial-gradient(1200px 600px at 20% 30%, rgba(34,211,238,0.1), transparent 60%),
+                radial-gradient(1000px 500px at 80% 20%, rgba(139,92,246,0.08), transparent 60%),
+                radial-gradient(1200px 600px at 60% 90%, rgba(16,185,129,0.06), transparent 60%),
+                radial-gradient(800px 400px at 60% 70%, rgba(59,130,246,0.05), transparent 50%),
+                radial-gradient(600px 300px at 40% 50%, rgba(236,72,153,0.04), transparent 50%);
+  }
+  50% {
+    background: radial-gradient(1200px 600px at 30% 10%, rgba(139,92,246,0.09), transparent 60%),
+                radial-gradient(1000px 500px at 70% 30%, rgba(16,185,129,0.08), transparent 60%),
+                radial-gradient(1200px 600px at 40% 80%, rgba(34,211,238,0.07), transparent 60%),
+                radial-gradient(800px 400px at 50% 60%, rgba(236,72,153,0.05), transparent 50%),
+                radial-gradient(600px 300px at 60% 30%, rgba(59,130,246,0.04), transparent 50%);
+  }
+  75% {
+    background: radial-gradient(1200px 600px at 15% 40%, rgba(16,185,129,0.08), transparent 60%),
+                radial-gradient(1000px 500px at 85% 15%, rgba(59,130,246,0.09), transparent 60%),
+                radial-gradient(1200px 600px at 70% 70%, rgba(139,92,246,0.06), transparent 60%),
+                radial-gradient(800px 400px at 40% 80%, rgba(34,211,238,0.05), transparent 50%),
+                radial-gradient(600px 300px at 20% 60%, rgba(236,72,153,0.04), transparent 50%);
+  }
 }
 
 .bg-grid {
@@ -146,7 +178,27 @@ img, svg {
 }
 
 [data-theme="light"] .floating-icon {
-  opacity: 0.05;
+  opacity: 0.08;
+  animation: lightFloatIcon 18s ease-in-out infinite;
+}
+
+@keyframes lightFloatIcon {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+    opacity: 0.08; 
+  }
+  25% { 
+    transform: translateY(-15px) rotate(90deg) scale(1.1); 
+    opacity: 0.12; 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(180deg) scale(1.2); 
+    opacity: 0.15; 
+  }
+  75% { 
+    transform: translateY(-10px) rotate(270deg) scale(1.05); 
+    opacity: 0.1; 
+  }
 }
 
 .floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
@@ -454,6 +506,126 @@ img, svg {
 
 [data-theme="light"] .portrait-ring {
   background: conic-gradient(from 180deg at 50% 50%, rgba(96,165,250,0.1), rgba(34,211,238,0.15), rgba(96,165,250,0.1));
+}
+
+/* Light theme specific animated elements */
+[data-theme="light"] .global-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(34,211,238,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(139,92,246,0.02) 0%, transparent 50%);
+  animation: lightParticleFloat 25s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes lightParticleFloat {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateX(100px) translateY(-50px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-50px) translateY(-100px) rotate(180deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateX(-100px) translateY(50px) rotate(270deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Light theme geometric patterns */
+[data-theme="light"] .bg-circuit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(59,130,246,0.05) 50%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(34,211,238,0.05) 50%, transparent 60%),
+    linear-gradient(90deg, transparent 40%, rgba(139,92,246,0.03) 50%, transparent 60%);
+  background-size: 300px 300px, 200px 200px, 150px 150px;
+  animation: lightCircuitMove 30s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes lightCircuitMove {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg); 
+    opacity: 0.6; 
+  }
+  25% { 
+    transform: translateX(50px) translateY(-30px) rotate(90deg); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: translateX(-30px) translateY(-60px) rotate(180deg); 
+    opacity: 0.4; 
+  }
+  75% { 
+    transform: translateX(-60px) translateY(30px) rotate(270deg); 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateX(0) translateY(0) rotate(360deg); 
+    opacity: 0.6; 
+  }
+}
+
+/* Light theme floating geometric shapes */
+[data-theme="light"] .floating-elements::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, rgba(59,130,246,0.4), rgba(34,211,238,0.4));
+  border-radius: 50%;
+  animation: lightShape1 12s ease-in-out infinite;
+}
+
+[data-theme="light"] .floating-elements::after {
+  content: '';
+  position: absolute;
+  top: 75%;
+  right: 8%;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(45deg, rgba(139,92,246,0.4), rgba(236,72,153,0.4));
+  border-radius: 2px;
+  animation: lightShape2 15s ease-in-out infinite;
+}
+
+@keyframes lightShape1 {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes lightShape2 {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.3) rotate(-180deg);
+    opacity: 0.7;
+  }
 }
 
 .cta {
