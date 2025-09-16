@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Saurabh Yadav — Full Stack Developer</title>
     <meta name="description" content="Portfolio of Saurabh Mahadev Yadav — Full Stack Developer specializing in React, Node.js, Python, and performant web apps." />
     <meta name="theme-color" content="#0b0f19" />
@@ -160,23 +164,183 @@
               </ul>
             </div>
             <div class="hero-media reveal">
-              <div class="portrait-wrap">
-                <div class="portrait-ring"></div>
-                <svg class="portrait" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Decorative portrait">
+              <div class="skills-circle-container">
+                <div class="skills-circle-ring"></div>
+                <svg class="skills-circle" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Animated skills circle">
                   <defs>
-                    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+                    <linearGradient id="circleGradient" x1="0" y1="0" x2="1" y2="1">
                       <stop offset="0%" stop-color="#3b82f6"/>
+                      <stop offset="50%" stop-color="#22d3ee"/>
+                      <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                    <linearGradient id="innerGradient" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#60a5fa"/>
                       <stop offset="100%" stop-color="#22d3ee"/>
                     </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                      <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
                   </defs>
-                  <circle cx="80" cy="80" r="70" fill="none" stroke="url(#ring)" stroke-width="2" opacity="0.2" />
-                  <circle cx="80" cy="80" r="56" fill="url(#ring)" opacity="0.10" />
-                  <g class="float">
-                    <circle cx="34" cy="40" r="6" fill="#60a5fa" />
-                    <circle cx="122" cy="52" r="5" fill="#22d3ee" />
-                    <circle cx="98" cy="120" r="4" fill="#93c5fd" />
+                  
+                  <!-- Outer rotating ring -->
+                  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#circleGradient)" stroke-width="2" opacity="0.3" class="outer-ring" />
+                  
+                  <!-- Inner static circle -->
+                  <circle cx="100" cy="100" r="70" fill="url(#innerGradient)" opacity="0.1" class="inner-circle" />
+                  
+                  <!-- Center circle -->
+                  <circle cx="100" cy="100" r="25" fill="url(#innerGradient)" opacity="0.2" class="center-circle" />
+                  
+                  <!-- Orbital paths for planets -->
+                  <g class="orbital-paths">
+                    <!-- Inner orbit -->
+                    <circle cx="100" cy="100" r="45" fill="none" stroke="rgba(96,165,250,0.1)" stroke-width="1" class="orbit-path orbit-1" />
+                    <!-- Middle orbit -->
+                    <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(34,211,238,0.1)" stroke-width="1" class="orbit-path orbit-2" />
+                    <!-- Outer orbit -->
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(139,92,246,0.1)" stroke-width="1" class="orbit-path orbit-3" />
+                  </g>
+                  
+                  <!-- 3D Skill planets with elliptical orbital mechanics -->
+                  <g class="skills-group">
+                    <!-- React - Inner orbit -->
+                    <g class="skill-item" data-skill="React" data-orbit="1" data-angle="0" data-depth="front">
+                      <circle cx="145" cy="100" r="12" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="133" y="88" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-react-original colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- Node.js - Middle orbit -->
+                    <g class="skill-item" data-skill="Node.js" data-orbit="2" data-angle="60" data-depth="back">
+                      <circle cx="132" cy="43" r="12" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="120" y="31" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-nodejs-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- Python - Middle orbit -->
+                    <g class="skill-item" data-skill="Python" data-orbit="2" data-angle="120" data-depth="front">
+                      <circle cx="68" cy="43" r="12" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="56" y="31" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-python-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- JavaScript - Middle orbit -->
+                    <g class="skill-item" data-skill="JavaScript" data-orbit="2" data-angle="180" data-depth="back">
+                      <circle cx="35" cy="100" r="12" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="23" y="88" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-javascript-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- TypeScript - Middle orbit -->
+                    <g class="skill-item" data-skill="TypeScript" data-orbit="2" data-angle="240" data-depth="front">
+                      <circle cx="68" cy="157" r="12" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="56" y="145" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-typescript-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- MongoDB - Middle orbit -->
+                    <g class="skill-item" data-skill="MongoDB" data-orbit="2" data-angle="300" data-depth="back">
+                      <circle cx="132" cy="157" r="12" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="120" y="145" width="24" height="24" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-mongodb-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- MySQL - Outer orbit -->
+                    <g class="skill-item" data-skill="MySQL" data-orbit="3" data-angle="30" data-depth="front">
+                      <circle cx="174" cy="57" r="10" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="164" y="47" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-mysql-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- Docker - Outer orbit -->
+                    <g class="skill-item" data-skill="Docker" data-orbit="3" data-angle="90" data-depth="back">
+                      <circle cx="185" cy="100" r="10" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="175" y="90" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-docker-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- Git - Outer orbit -->
+                    <g class="skill-item" data-skill="Git" data-orbit="3" data-angle="150" data-depth="front">
+                      <circle cx="174" cy="143" r="10" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="164" y="133" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-git-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- AWS - Outer orbit -->
+                    <g class="skill-item" data-skill="AWS" data-orbit="3" data-angle="210" data-depth="back">
+                      <circle cx="100" cy="185" r="10" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="90" y="175" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-amazonwebservices-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- Express - Outer orbit -->
+                    <g class="skill-item" data-skill="Express" data-orbit="3" data-angle="270" data-depth="front">
+                      <circle cx="26" cy="143" r="10" fill="url(#innerGradient)" opacity="0.9" class="skill-bg" />
+                      <foreignObject x="16" y="133" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-express-original colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    
+                    <!-- FastAPI - Outer orbit -->
+                    <g class="skill-item" data-skill="FastAPI" data-orbit="3" data-angle="330" data-depth="back">
+                      <circle cx="15" cy="100" r="10" fill="url(#innerGradient)" opacity="0.7" class="skill-bg" />
+                      <foreignObject x="5" y="90" width="20" height="20" class="skill-icon-wrapper">
+                        <div class="skill-icon-container">
+                          <i class="devicon-fastapi-plain colored"></i>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  
+                  <!-- Animated dots around the circle -->
+                  <g class="animated-dots">
+                    <circle cx="100" cy="15" r="2" fill="#60a5fa" opacity="0.6" class="dot dot-1" />
+                    <circle cx="185" cy="100" r="2" fill="#22d3ee" opacity="0.6" class="dot dot-2" />
+                    <circle cx="100" cy="185" r="2" fill="#8b5cf6" opacity="0.6" class="dot dot-3" />
+                    <circle cx="15" cy="100" r="2" fill="#ec4899" opacity="0.6" class="dot dot-4" />
                   </g>
                 </svg>
+                
+                <!-- Tooltip -->
+                <div class="skill-tooltip" id="skill-tooltip">
+                  <span class="tooltip-text"></span>
+                </div>
               </div>
             </div>
           </div>
