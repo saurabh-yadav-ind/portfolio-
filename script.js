@@ -1081,4 +1081,124 @@ notificationStyles.textContent = `
 `;
 document.head.appendChild(notificationStyles);
 
+// Enhanced mobile touch handling
+function enhanceMobileTouchHandling() {
+  // Add touch event listeners for all CTA buttons
+  document.querySelectorAll('.cta').forEach(button => {
+    // Remove any existing touch listeners to avoid duplicates
+    button.removeEventListener('touchstart', handleTouchStart);
+    button.removeEventListener('touchend', handleTouchEnd);
+    
+    // Add new touch listeners
+    button.addEventListener('touchstart', handleTouchStart, { passive: false });
+    button.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    // Ensure the button is clickable
+    button.style.cursor = 'pointer';
+    button.style.userSelect = 'none';
+    button.style.webkitUserSelect = 'none';
+    button.style.webkitTapHighlightColor = 'transparent';
+  });
+  
+  // Add touch event listeners for navigation
+  const navToggle = document.querySelector('.nav-toggle');
+  if (navToggle) {
+    navToggle.removeEventListener('touchstart', handleNavTouchStart);
+    navToggle.addEventListener('touchstart', handleNavTouchStart, { passive: false });
+    navToggle.style.cursor = 'pointer';
+    navToggle.style.userSelect = 'none';
+    navToggle.style.webkitUserSelect = 'none';
+    navToggle.style.webkitTapHighlightColor = 'transparent';
+  }
+  
+  // Add touch event listeners for theme toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    themeToggle.removeEventListener('touchstart', handleThemeTouchStart);
+    themeToggle.addEventListener('touchstart', handleThemeTouchStart, { passive: false });
+    themeToggle.style.cursor = 'pointer';
+    themeToggle.style.userSelect = 'none';
+    themeToggle.style.webkitUserSelect = 'none';
+    themeToggle.style.webkitTapHighlightColor = 'transparent';
+  }
+  
+  // Add touch event listeners for contact cards
+  document.querySelectorAll('.contact-card').forEach(card => {
+    card.removeEventListener('touchstart', handleCardTouchStart);
+    card.addEventListener('touchstart', handleCardTouchStart, { passive: false });
+    card.style.cursor = 'pointer';
+    card.style.userSelect = 'none';
+    card.style.webkitUserSelect = 'none';
+    card.style.webkitTapHighlightColor = 'transparent';
+  });
+}
+
+// Touch event handlers
+function handleTouchStart(e) {
+  e.preventDefault();
+  const button = e.currentTarget;
+  button.style.transform = 'scale(0.98)';
+  button.style.transition = 'transform 0.1s ease';
+  
+  // Add visual feedback
+  button.style.boxShadow = '0 0 15px rgba(96,165,250,0.3)';
+}
+
+function handleTouchEnd(e) {
+  const button = e.currentTarget;
+  button.style.transform = 'scale(1)';
+  button.style.boxShadow = '';
+  
+  // Trigger the actual click after a short delay
+  setTimeout(() => {
+    button.click();
+  }, 50);
+}
+
+function handleNavTouchStart(e) {
+  e.preventDefault();
+  const button = e.currentTarget;
+  button.style.transform = 'scale(0.98)';
+  button.style.transition = 'transform 0.1s ease';
+  
+  setTimeout(() => {
+    button.style.transform = 'scale(1)';
+    button.click();
+  }, 50);
+}
+
+function handleThemeTouchStart(e) {
+  e.preventDefault();
+  const button = e.currentTarget;
+  button.style.transform = 'scale(0.98)';
+  button.style.transition = 'transform 0.1s ease';
+  
+  setTimeout(() => {
+    button.style.transform = 'scale(1)';
+    button.click();
+  }, 50);
+}
+
+function handleCardTouchStart(e) {
+  e.preventDefault();
+  const card = e.currentTarget;
+  card.style.transform = 'scale(0.98)';
+  card.style.transition = 'transform 0.1s ease';
+  
+  setTimeout(() => {
+    card.style.transform = 'scale(1)';
+    card.click();
+  }, 50);
+}
+
+// Initialize mobile touch handling when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  enhanceMobileTouchHandling();
+});
+
+// Re-initialize on window resize
+window.addEventListener('resize', () => {
+  enhanceMobileTouchHandling();
+});
+
 
