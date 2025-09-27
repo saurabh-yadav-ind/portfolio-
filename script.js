@@ -1201,4 +1201,195 @@ window.addEventListener('resize', () => {
   enhanceMobileTouchHandling();
 });
 
+// Certificate Modal Functionality
+function showCertificate(certificateType) {
+  const modal = document.getElementById('certificate-modal');
+  const certificateImage = document.getElementById('certificate-image');
+  const modalTitle = document.querySelector('.certificate-modal-title');
+  const modalBody = document.querySelector('.certificate-modal-body');
+  
+  // Define certificate paths
+  const certificates = {
+    'java': {
+      src: 'photo_2025-09-27_22-50-21.jpg',
+      title: 'Java Full Stack Developer Certificate',
+      type: 'image'
+    },
+    'c-programming': {
+      src: 'Art_Of_C_Programming.pdf',
+      title: 'Art of C Programming Certificate',
+      type: 'pdf'
+    }
+  };
+  
+  const certificate = certificates[certificateType];
+  if (!certificate) return;
+  
+  // Clear previous content
+  modalBody.innerHTML = '';
+  
+  if (certificate.type === 'image') {
+    // Display image
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'certificate-image-container';
+    
+    const img = document.createElement('img');
+    img.src = certificate.src;
+    img.alt = certificate.title;
+    img.className = 'certificate-image';
+    
+    imageContainer.appendChild(img);
+    modalBody.appendChild(imageContainer);
+  } else if (certificate.type === 'pdf') {
+    // Display PDF in iframe or provide download link
+    const pdfContainer = document.createElement('div');
+    pdfContainer.className = 'certificate-pdf-container';
+    pdfContainer.style.cssText = `
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: var(--bg-1);
+      border-radius: 8px;
+      padding: 20px;
+    `;
+    
+    // PDF icon
+    const pdfIcon = document.createElement('div');
+    pdfIcon.innerHTML = `
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor" style="color: var(--accent);">
+        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+      </svg>
+    `;
+    
+    // PDF title
+    const pdfTitle = document.createElement('h4');
+    pdfTitle.textContent = certificate.title;
+    pdfTitle.style.cssText = `
+      margin: 0;
+      color: var(--text-0);
+      font-size: 18px;
+      text-align: center;
+    `;
+    
+    // Download button
+    const downloadBtn = document.createElement('a');
+    downloadBtn.href = certificate.src;
+    downloadBtn.download = certificate.title;
+    downloadBtn.className = 'certificate-btn';
+    downloadBtn.style.cssText = `
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    `;
+    downloadBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+      </svg>
+      Download Certificate
+    `;
+    
+    // View in new tab button
+    const viewBtn = document.createElement('button');
+    viewBtn.className = 'certificate-btn';
+    viewBtn.style.cssText = `
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    `;
+    viewBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
+      </svg>
+      View in New Tab
+    `;
+    viewBtn.onclick = () => window.open(certificate.src, '_blank');
+    
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.cssText = `
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    `;
+    
+    buttonContainer.appendChild(downloadBtn);
+    buttonContainer.appendChild(viewBtn);
+    
+    pdfContainer.appendChild(pdfIcon);
+    pdfContainer.appendChild(pdfTitle);
+    pdfContainer.appendChild(buttonContainer);
+    modalBody.appendChild(pdfContainer);
+  }
+  
+  // Set modal title
+  modalTitle.textContent = certificate.title;
+  
+  // Show modal
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  
+  // Add escape key listener
+  const escapeHandler = (e) => {
+    if (e.key === 'Escape') {
+      closeCertificate();
+      document.removeEventListener('keydown', escapeHandler);
+    }
+  };
+  document.addEventListener('keydown', escapeHandler);
+  
+  // Add click outside to close
+  const clickOutsideHandler = (e) => {
+    if (e.target === modal) {
+      closeCertificate();
+      modal.removeEventListener('click', clickOutsideHandler);
+    }
+  };
+  modal.addEventListener('click', clickOutsideHandler);
+}
+
+function closeCertificate() {
+  const modal = document.getElementById('certificate-modal');
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+  
+  // Clear the modal body content to free memory
+  const modalBody = document.querySelector('.certificate-modal-body');
+  modalBody.innerHTML = '';
+}
+
+// Enhanced certificate button interactions
+document.addEventListener('DOMContentLoaded', () => {
+  // Add touch support for certificate buttons
+  document.querySelectorAll('.certificate-btn').forEach(button => {
+    button.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      button.style.transform = 'scale(0.95)';
+      button.style.transition = 'transform 0.1s ease';
+    });
+    
+    button.addEventListener('touchend', () => {
+      button.style.transform = 'scale(1)';
+    });
+  });
+});
+
 
